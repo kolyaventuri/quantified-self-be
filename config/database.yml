@@ -80,6 +80,10 @@ test:
 #
 production:
   <<: *default
-  database: quantified-self-be_production
-  username: quantified-self-be
-  password: <%= ENV['QUANTIFIED-SELF-BE_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
