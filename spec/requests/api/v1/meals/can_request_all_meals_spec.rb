@@ -8,14 +8,14 @@ describe 'When a GET request is made to /api/v1/meals' do
 
     expect(response).to be_successful
 
-    data = JSON.parse(response, symbolize_names: true)
+    data = JSON.parse(response.body, symbolize_names: true)
 
     expect(data.length).to be(meals.length)
 
-    expect(data.first.id).to be(data.first.id)
-    expect(data.first.name).to eq(data.first.name)
+    expect(data.first[:id]).to be(meals.first.id)
+    expect(data.first[:name]).to eq(meals.first.name)
 
-    expect(data.last.id).to be(data.last.id)
-    expect(data.last.name).to be(data.last.name)
+    expect(data.last[:id]).to be(meals.last.id)
+    expect(data.last[:name]).to eq(meals.last.name)
   end
 end
