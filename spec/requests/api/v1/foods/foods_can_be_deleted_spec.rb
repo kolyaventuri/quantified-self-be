@@ -18,7 +18,9 @@ describe 'A DELETE request to a specific /api/v1/foods/:id' do
     expect(response.status).to be(404)
   end
 
-  xscenario 'should return a 404 status code if the food does not exist' do
+  scenario 'should return a 404 status code if the food does not exist' do
+    delete '/api/v1/foods/1000'
 
+    expect(response.status).to be(404)
   end
 end
