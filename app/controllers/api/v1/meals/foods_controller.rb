@@ -19,11 +19,8 @@ class Api::V1::Meals::FoodsController < ApplicationController
 
     meal.foods << food
 
-    if meal.save
-      msg = { message: "Successfully added #{food.name} to #{meal.name}" }
-      render json: msg, status: 201 and return
-    end
-
-    render nothing: true, status: 400
+    meal.save
+    msg = { message: "Successfully added #{food.name} to #{meal.name}" }
+    render json: msg, status: 201 and return
   end
 end
