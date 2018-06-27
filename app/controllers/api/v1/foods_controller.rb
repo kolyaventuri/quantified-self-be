@@ -4,8 +4,9 @@ class Api::V1::FoodsController < ApplicationController
   end
 
   def show
-    food = Food.find(params[:id])
+    food = Food.where(id: params[:id]).first
 
+    render nothing: true, status: 404 and return if food.nil?
     render json: food
   end
 end
