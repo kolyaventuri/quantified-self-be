@@ -14,4 +14,12 @@ describe 'A GET request to a specfic /api/v1/foods/:id' do
     expect(data[:name]).to     eq(foods.first.name)
     expect(data[:calories]).to be(foods.first.calories)
   end
+
+  it 'should return a 404 error if the food does not exist' do
+    foods = create_list(:food, 2)
+
+    get '/api/v1/foods/2'
+
+    expect(response.status).to be(404)
+  end
 end
