@@ -9,4 +9,18 @@ class Api::V1::FoodsController < ApplicationController
     render nothing: true, status: 404 and return if food.nil?
     render json: food
   end
+
+  def create
+    food = Food.new(food_params)
+
+    if food.save
+      render json: food
+    end
+  end
+
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :calories);
+  end
 end
