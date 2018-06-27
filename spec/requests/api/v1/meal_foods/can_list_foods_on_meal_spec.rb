@@ -14,16 +14,16 @@ describe 'A GET request to a specific /api/v1/meals/:meal_id/foods' do
 
     expect(response).to be_successful
 
-    data = JSON.parse(response, symbolize_names: true)
+    data = JSON.parse(response.body, symbolize_names: true)
 
     expect(data[:id]).to   be(meal.id)
-    expect(data[:name]).to be(meal.name)
+    expect(data[:name]).to eq(meal.name)
 
     expect(data[:foods]).to        be_an(Array)
     expect(data[:foods].length).to be(foods.length)
 
     expect(data[:foods].first[:id]).to   be(foods.first.id)
-    expect(data[:foods].first[:name]).to be(foods.first.name)
+    expect(data[:foods].first[:name]).to eq(foods.first.name)
   end
 
   it 'should return a 404 error if the meal is not found' do
