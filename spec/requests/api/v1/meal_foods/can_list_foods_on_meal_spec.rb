@@ -26,7 +26,9 @@ describe 'A GET request to a specific /api/v1/meals/:meal_id/foods' do
     expect(data[:foods].first[:name]).to be(foods.first.name)
   end
 
-  xit 'should return a 404 error if the meal is not found' do
+  it 'should return a 404 error if the meal is not found' do
+    get '/api/v1/meals/1000/foods'
 
+    expect(response.status).to be(404)
   end
 end
