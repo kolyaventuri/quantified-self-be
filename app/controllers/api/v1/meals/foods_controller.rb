@@ -16,5 +16,14 @@ class Api::V1::Meals::FoodsController < ApplicationController
     if meal.nil? || food.nil?
       render nothing: true, status: 404 and return
     end
+
+    meal.foods << food
+
+    if meal.save
+      msg = { message: "Successfully added #{food.name} to #{meal.name}" }
+      render json: msg, status: 201 and return
+    end
+
+    render nothing: true, status: 400
   end
 end
