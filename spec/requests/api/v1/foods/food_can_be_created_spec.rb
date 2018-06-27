@@ -15,4 +15,14 @@ describe 'A POST request to /api/v1/foods' do
       expect(json[:calories]).to be(data[:food][:calories])
     end
   end
+
+  describe 'without proper data' do
+    scenario 'should return a 400 status code' do
+      data = { food: { name: 'Fish' } }
+
+      post '/api/v1/foods', params: data
+
+      expect(response.status).to be(400)
+    end
+  end
 end
