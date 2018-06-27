@@ -9,6 +9,7 @@ describe 'A GET request to a specific /api/v1/meals/:meal_id/foods' do
     foods.each do |food|
       meal.foods << food
     end
+    meal.save!
 
     get "/api/v1/meals/#{meal.id}/foods"
 
