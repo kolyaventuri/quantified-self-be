@@ -15,6 +15,8 @@ class Api::V1::FoodsController < ApplicationController
 
     if food.save
       render json: food
+    else
+      render nothing: true, status: 400
     end
   end
 
