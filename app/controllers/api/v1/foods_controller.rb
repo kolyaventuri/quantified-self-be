@@ -24,7 +24,13 @@ class Api::V1::FoodsController < ApplicationController
     food = Food.where(id: params[:id]).first
 
     if food.nil?
-      
+      render nothing: true, status: 400 and return
+    end
+
+    if food.update(food_params)
+      render json: food
+    else
+      render nothing: true, status: 400
     end
   end
 
