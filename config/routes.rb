@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :foods
 
-      resources :meals, only: :index
+      resources :meals, only: :index do
+        get    '/foods',     to: 'meals/foods#index'
+        post   '/foods/:id', to: 'meals/foods#create'
+        delete '/foods/:id', to: 'meals/foods#destroy'
+      end
     end
   end
 end
