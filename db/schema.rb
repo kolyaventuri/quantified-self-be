@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_27_053728) do
+ActiveRecord::Schema.define(version: 2018_06_27_164836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2018_06_27_053728) do
 
   create_table "meals", force: :cascade do |t|
     t.string "name"
-    t.integer "goal"
   end
 
   add_foreign_key "meal_foods", "foods"
