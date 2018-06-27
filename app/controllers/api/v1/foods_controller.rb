@@ -20,6 +20,14 @@ class Api::V1::FoodsController < ApplicationController
     end
   end
 
+  def update
+    food = Food.where(id: params[:id]).first
+
+    if food.nil?
+      
+    end
+  end
+
   private
 
   def food_params
