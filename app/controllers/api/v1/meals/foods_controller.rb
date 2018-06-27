@@ -23,4 +23,8 @@ class Api::V1::Meals::FoodsController < ApplicationController
     msg = { message: "Successfully added #{food.name} to #{meal.name}" }
     render json: msg, status: 201 and return
   end
+
+  def destroy
+
+  end
 end

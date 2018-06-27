@@ -8,6 +8,8 @@ describe 'A DELETE request to /api/v1/meals/:meal_id/foods/:id' do
     meal.foods << food
     meal.save
 
+    expect(Meal.first.foods.length).to be(1)
+
     delete "/api/v1/meals/#{meal.id}/foods/#{food.id}"
 
     expect(response).to be_successful
@@ -15,6 +17,8 @@ describe 'A DELETE request to /api/v1/meals/:meal_id/foods/:id' do
     data = JSON.parse(response.body, symbolize_names: true)
 
     expect(data[:message]).to eq("Successfully removed #{food.name} from #{meal.name}")
+
+    expect(Meal.first.foods.length).to be(0)
   end
 
   it 'should return a 404 status code if the meal cannot be found' do
