@@ -1,0 +1,12 @@
+addons:
+  postgresql: 9.6
+
+dist: trusty
+language: ruby
+cache: bundler
+rvm:
+  - 2.4.4
+script:
+  - bundle exec rails db:create RAILS_ENV=test
+  - bundle exec rails db:migrate RAILS_ENV=test
+  - bundle exec rspec

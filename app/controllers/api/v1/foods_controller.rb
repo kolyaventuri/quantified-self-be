@@ -27,11 +27,9 @@ class Api::V1::FoodsController < ApplicationController
       render nothing: true, status: 400 and return
     end
 
-    if food.update(food_params)
-      render json: food
-    else
-      render nothing: true, status: 400
-    end
+    food.update(food_params)
+
+    render json: food
   end
 
   def destroy
@@ -41,11 +39,9 @@ class Api::V1::FoodsController < ApplicationController
       render nothing: true, status: 404 and return
     end
 
-    if food.delete
-      render nothing: true, status: 204
-    else
-      render nothing: true, status: 404 and return
-    end
+    food.delete
+
+    render nothing: true, status: 204
   end
 
   private
