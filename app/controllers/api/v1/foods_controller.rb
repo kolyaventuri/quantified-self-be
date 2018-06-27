@@ -34,6 +34,20 @@ class Api::V1::FoodsController < ApplicationController
     end
   end
 
+  def destroy
+    food = Food.where(id: params[:id]).first
+
+    if food.nil?
+      render nothing: true, status: 404 and return
+    end
+
+    if food.delete
+      render nothing: true, status: 204
+    else
+      render nothing: true, status: 404 and return
+    end
+  end
+
   private
 
   def food_params
