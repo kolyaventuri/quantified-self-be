@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Meal.create!(name: 'Breakfast')
-Meal.create!(name: 'Snacks')
+Meal.create!(name: 'Snack')
 Meal.create!(name: 'Lunch')
 Meal.create!(name: 'Dinner')
